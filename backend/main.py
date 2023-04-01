@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 
-from backend.api.api import api_router
+from backend.app.adapters import torneo_controller
 from backend.core.config import settings
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -14,4 +14,4 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-app.include_router(api_router, prefix=settings.API_V1_STR)
+app.include_router(torneo_controller.router, prefix=settings.API_V1_STR)
