@@ -20,7 +20,7 @@ class TorneoModel(BaseModel):
         json_encoders = {ObjectId: str}
 
 
-class UpdateTorenoModel(BaseModel):
+class UpdateTorneoModel(BaseModel):
     name: str
     dt_created: Optional[datetime]
     dt_schedule: Optional[datetime]

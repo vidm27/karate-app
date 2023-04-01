@@ -18,9 +18,16 @@ async def create(torneo: TorneoModel) -> TorneoModel:
     return created_torneo
 
 
-async def update_product(torneo_id: str, torneo: TorneoModel) -> TorneoModel:
-    ...
+async def update_torneo(torneo_id: str, torneo: dict) -> TorneoModel:
+    update_result = await db["torneo"].update_one({"_id": torneo_id}, {"$set": torneo})
+
+    if update_result.modified_count == 1:
+        if (current_torneo := await db["torneo"].find_one({"_id": torneo_id})) is not None:
+            return current_torneo
 
 
-async def delete_torneo(torneo_id: str) -> None:
-    ...
+async def delete_torneo(torneo_id: str) -> bool:
+    delete_result = await db["torneo"].delete_one({"_id": torneo_id})
+    if delete_result.deleted_count == 1:
+        return True
+    return False
