@@ -1,3 +1,4 @@
+from enum import Enum
 from typing import Optional
 
 from bson import ObjectId
@@ -6,9 +7,18 @@ from pydantic import BaseModel, Field
 from backend.db.py_object import PyObjectId
 
 
+class Cinturon(str, Enum):
+    BLANCO = "blanco"
+    AMARILLO = "amarillo"
+    ANARANJADO = "aranjado"
+    VERDE = "verde"
+    MORADO = "morado"
+    CHOCOLATE = "chocolate"
+    NEGRO = "negro"
+
+
 class CategoriaCinturonModel(BaseModel):
-    cinturon_id: PyObjectId
-    nombre: str
+    name: Cinturon
 
 
 class Puntaje(BaseModel):
@@ -21,7 +31,7 @@ class CategoriaModel(BaseModel):
     name: str
     age_min: int
     age_max: int
-    cinturones: list[CategoriaCinturonModel] = []
+    cinturones: list[Cinturon] = []
     competicion_id: PyObjectId
     torneo_id: PyObjectId
 
