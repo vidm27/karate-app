@@ -26,3 +26,18 @@ async def delete_category(categoria_id) -> bool:
     if delete_result.deleted_count == 1:
         return True
     return False
+
+
+async def search_category(torneo_id: str, competencia: str):
+    pipeline = [
+        {
+            "$lookup": {
+                "from": "compentencia",
+                "localField": "competicion_id",
+                "foreignField": "_id",
+                "as": "compentencia"
+            }
+        }
+    ]
+    async for i in db.categoria.aggregate(pipeline):
+        print(i)

@@ -13,6 +13,11 @@ async def create_category(categoria: CategoriaModel = Body(...)):
     return category
 
 
+@router.get("/categorias")
+async def get_all_category(torneo_id: str = None, competicion_id: str = None):
+    result = await categoria_repository.search_category("", "")
+
+
 @router.get("/categorias/{categoria_id}")
 async def get_category(categoria_id):
     category = await categoria_repository.read_by_id(categoria_id)
