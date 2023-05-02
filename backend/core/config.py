@@ -1,4 +1,5 @@
 import secrets
+from pathlib import Path
 from typing import List, Optional, Dict, Any
 
 from pydantic import BaseSettings, MongoDsn, AnyHttpUrl, validator
@@ -54,3 +55,7 @@ settings = Setttigns(
     MONGO_QUERY="authSource=admin",
     BACKEND_CORS_ORIGINS=["*"]
 )
+
+BASE_PATH = Path(__file__).resolve().parent.parent.parent
+STATIC_PATH = str(BASE_PATH / "frontend/static")
+TEMPLATE_PATH = str(BASE_PATH / "frontend/templates")
