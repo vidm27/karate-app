@@ -3,8 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="../css/base.css">
-    <link rel="stylesheet" href="../css/bulma.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', path='css/base.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', path='css/bulma.min.css')}}">
+    <script defer src="{{ url_for('static', path='tableroPuntuacion/controller/initialize.js')}}"></script>
+    <script defer src="{{ url_for('static', path='tableroPuntuacion/model/Competitor.js')}}"></script>
+    <script defer src="{{ url_for('static', path='tableroPuntuacion/view/updateTableroPuntuacion.js')}}"></script>
 </head>
 <style>
     .is-gap-1 {
@@ -14,7 +17,8 @@
     .is-gap-2 {
         gap: 2rem;
     }
-    .banner-torneo{
+
+    .banner-torneo {
         background-color: var(--clr-dark);
         margin-bottom: 4rem;
         padding-inline: 1rem;
@@ -24,18 +28,22 @@
         border-bottom-right-radius: 1rem;
 
     }
-    .banner-torneo .columns{
+
+    .banner-torneo .columns {
         align-items: center;
     }
-    .columns .column{
+
+    .columns .column {
         text-align: center;
     }
-    .banner-torneo .banner-title{
+
+    .banner-torneo .banner-title {
         font-size: 3rem;
         flex-grow: 3;
         color: var(--clr-white);
         font-weight: bold;
     }
+
     .prompt--point {
         flex-grow: 1;
         background-color: var(--clr-dark);
@@ -44,7 +52,7 @@
         font-weight: bold;
         text-align: center;
         border-radius: .25rem;
-        box-shadow: 0 .5em 1em -.125em rgba(10,10,10,.1),0 0 0 1px rgba(10,10,10,.02);
+        box-shadow: 0 .5em 1em -.125em rgba(10, 10, 10, .1), 0 0 0 1px rgba(10, 10, 10, .02);
     }
 
     .prompt--point .point-title {
