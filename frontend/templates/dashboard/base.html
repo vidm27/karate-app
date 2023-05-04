@@ -6,9 +6,50 @@
     <link rel="stylesheet" href="{{ url_for('static', path='css/base.css')}}">
     <link rel="stylesheet" href="{{ url_for('static', path='css/bulma.min.css')}}">
     <link rel="stylesheet" href="{{ url_for('static', path='css/sidebar.css')}}">
+    <style>
+        main#main {
+            margin-left: 15rem;
+        }
+        #header-torneo{
+            background-color: var(--clr-dark);
+            border-bottom-right-radius: 1rem;
+            border-bottom-left-radius: 1rem;
+            color: var(--clr-white);
+            padding: 1.5rem 2rem;
+        }
+        #header-torneo h2{
+            font-size: 3rem;
+            text-transform: uppercase;
+        }
+        #header-torneo .header-title{
+            flex-grow: 2;
+            border: 2px solid #FFFFFF;
+            margin-left: 2rem;
+            border-radius: .5rem;
+        }
+        #header-competencia{
+            border-right: 2px solid #FFFFFF;
+            max-width: 15rem;
+        }
+    </style>
 </head>
+
 <body>
-    {% include 'shared/sidebar.html'%}
-   {% block body  %}{% endblock %}
+{% include 'shared/sidebar.html'%}
+<main id="main">
+    <div class="container is-fluid">
+        <div id="header-torneo" class="container header-torneo">
+            <div class="columns">
+                <div id="header-competencia" class="column">
+                    <h2>KATA</h2>
+                </div>
+                <div class="column header-title">
+                    <h2>IX COPA MURAYANA PANAMÁ</h2>
+                </div>
+            </div>
+        </div>
+        <h2>Hola</h2>
+    </div>
+</main>
 </body>
 </html>
