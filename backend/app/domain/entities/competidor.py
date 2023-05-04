@@ -30,3 +30,17 @@ class UpdateCompetidorModel(BaseModel):
     class Config:
         arbitrary_types_allowed = True
         json_encoders = {ObjectId: str}
+
+
+class CompetidorTableroPuntuacion(BaseModel):
+    name: str
+    lastname: str
+    dojo: str
+    age: int
+    category: str
+    cinturon: str
+    point: str
+
+    class Config:
+        arbitrary_types_allowed = True
+        json_encoders = {ObjectId: str}

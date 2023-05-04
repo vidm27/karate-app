@@ -12,6 +12,9 @@ router.mount(
     name="static",
 )
 
+@router.get("/evaluaciones")
+async def read_template_evaluaciones(request: Request):
+    return templates.TemplateResponse('dashboard/base.html', {'request': request})
 
 @router.get("/score_prompter")
 async def score_prompter(request: Request):
