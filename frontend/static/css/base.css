@@ -72,8 +72,8 @@ p {
 body {
     font-family: var(--ff-sans-normal);
     font-size: var(--fs-400);
-    color: hsl( var(--clr-white) );
-    background-color: hsl( var(--clr-dark) );
+    color: hsl(var(--clr-white));
+    background-color: hsl(var(--clr-dark));
     line-height: 1.5;
     min-height: 100vh;
 }
@@ -95,13 +95,60 @@ select {
 
 /* remove animations for people who've turned them off */
 @media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
 }
+
+.belts {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.belt {
+    width: 10rem;
+    height: 2rem;
+    border-radius: .5rem;
+}
+
+.belt.is-white {
+    background-color: var(--clr-white);
+    border: #000000 solid 1px;
+}
+
+.belt.is-yellow {
+    background-color: var(--clr-belt-yellow);
+}
+
+.belt.is-green {
+    background-color: var(--clr-belt-green);
+}
+
+.belt.is-orange {
+    background-color: var(--clr-belt-orange);
+}
+
+.belt.is-purple {
+    background-color: var(--clr-belt-purple);
+}
+
+.belt.is-brown {
+    background-color: var(--clr-belt-brown);
+}
+
+.belt.is-black {
+    background-color: var(--clr-belt-black);
+    border: #fff solid 1px;
+}
+
+main#main {
+    margin-left: 12rem;
+}
+
 
