@@ -1,10 +1,20 @@
-from fastapi import APIRouter, Body, HTTPException, status, Response
+from fastapi import APIRouter, Body, HTTPException, status, Response, Request
 from fastapi.encoders import jsonable_encoder
+from fastapi.staticfiles import StaticFiles
+from fastapi.templating import Jinja2Templates
 
 from backend.app.domain.entities.categoria import CategoriaModel
 from backend.app.domain.repositories import categoria_repository
+from backend.core.config import TEMPLATE_PATH, STATIC_PATH
 
 router = APIRouter(tags=["categoria"])
+
+templates = Jinja2Templates(directory=TEMPLATE_PATH)
+router.mount(
+    STATIC_PATH,
+    StaticFiles(directory=STATIC_PATH),
+    name="static",
+)
 
 
 @router.post("/categorias")
@@ -14,8 +24,9 @@ async def create_category(categoria: CategoriaModel = Body(...)):
 
 
 @router.get("/categorias")
-async def get_all_category(torneo_id: str = None, competicion_id: str = None):
+async def get_all_category(request: Request):
     result = await categoria_repository.search_category("", "")
+    return templates.TemplateResponse("categoria/categoria.html", {"request": request})
 
 
 @router.get("/categorias/{categoria_id}")

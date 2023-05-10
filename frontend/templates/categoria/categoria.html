@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Categoria</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='css/base.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', path='css/bulma.min.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', path='css/sidebar.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', path='css/sweetalert2.min.css')}}">
+    <script defer src="{{ url_for('static', path='js/sweetalert2.all.min.js')}}"></script>
+
+    <style>
+        .form .label{
+            text-align: left;
+        }
+        .form .select, .form select{
+            width: 100%;
+        }
+        #list-categoria {
+            gap: 1rem;
+        }
+
+        .card.card--tiny .card-footer {
+            padding: 1rem .5rem;
+            gap: 1rem;
+        }
+
+        .card.card--tiny .card-header {
+            background-color: var(--clr-dark);
+            color: var(--clr-white);
+        }
+
+        .card.card--tiny .card-header .card-title-text {
+            color: var(--clr-white);
+            margin-right: .8rem;
+            font-weight: bold;
+        }
+
+        button.card-footer-item {
+            border: none;
+            background-color: #f1f1f1;
+            font-weight: bold;
+            padding: .2rem 1rem;
+            border-radius: .7rem;
+            transition: background ease-out .1s;
+        }
+
+        button.card-footer-item:hover {
+            background-color: var(--clr-dark);
+            color: var(--clr-white);
+        }
+
+        .belt--checkbox {
+            width: 1rem;
+            height: 2rem;
+            padding: .2rem 1rem;
+            border-radius: .7rem;
+        }
+
+        .belt--checkbox.is-white {
+            background-color: var(--clr-white);
+            border: #000000 solid 1px;
+        }
+
+        .belt--checkbox.is-yellow {
+            background-color: var(--clr-belt-yellow);
+        }
+
+        .belt--checkbox.is-green {
+            background-color: var(--clr-belt-green);
+        }
+
+        .belt--checkbox.is-orange {
+            background-color: var(--clr-belt-orange);
+        }
+
+        .belt--checkbox.is-purple {
+            background-color: var(--clr-belt-purple);
+        }
+
+        .belt--checkbox.is-brown {
+            background-color: var(--clr-belt-brown);
+        }
+
+        .belt--checkbox.is-black {
+            background-color: var(--clr-belt-black);
+            border: #fff solid 1px;
+        }
+    </style>
+</head>
+<body>
+{% include 'shared/sidebar.html'%}
+<main id="main">
+    <div class="container is-fluid">
+        <article class="columns">
+            <div class="column">
+                <button id="new--participant" class="button" type="button">Nueva categoria</button>
+            </div>
+        </article>
+        <div id="list-categoria" class="is-flex is-flex-wrap-wrap">
+            <div class="card card--tiny categoria">
+                <div class="card-header">
+                    <div class="card-header-title">
+                        <h2 class="card-title-text">Edad: 20-30</h2>
+                        <div class="belts">
+                            <div class="belt is-yellow"></div>
+                            <div class="belt is-orange"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <button class="categoria--delete card-footer-item">Eliminar</button>
+                    <button class="categoria--edit card-footer-item">Editar</button>
+                    <button class="categoria--new-participant card-footer-item">Nuevo Participante</button>
+                </div>
+            </div>
+            <div class="card card--tiny categoria">
+                <div class="card-header">
+                    <div class="card-header-title">
+                        <h2 class="card-title-text">Edad: 20-30</h2>
+                        <div class="belts">
+                            <div class="belt is-yellow"></div>
+                            <div class="belt is-orange"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <button class="categoria--delete card-footer-item">Eliminar</button>
+                    <button class="categoria--edit card-footer-item">Editar</button>
+                    <button class="categoria--new-participant card-footer-item">Nuevo Participante</button>
+                </div>
+            </div>
+            <div class="card card--tiny categoria">
+                <div class="card-header">
+                    <div class="card-header-title">
+                        <h2 class="card-title-text">Edad: 20-30</h2>
+                        <div class="belts">
+                            <div class="belt is-yellow"></div>
+                            <div class="belt is-orange"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <button class="categoria--delete card-footer-item">Eliminar</button>
+                    <button class="categoria--edit card-footer-item">Editar</button>
+                    <button class="categoria--new-participant card-footer-item">Nuevo Participante</button>
+                </div>
+            </div>
+            <div class="card card--tiny categoria">
+                <div class="card-header">
+                    <div class="card-header-title">
+                        <h2 class="card-title-text">Edad: 20-30</h2>
+                        <div class="belts">
+                            <div class="belt is-yellow"></div>
+                            <div class="belt is-orange"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <button class="categoria--delete card-footer-item">Eliminar</button>
+                    <button class="categoria--edit card-footer-item">Editar</button>
+                    <button class="categoria--new-participant card-footer-item">Nuevo Participante</button>
+                </div>
+            </div>
+            <div class="card card--tiny categoria">
+                <div class="card-header">
+                    <div class="card-header-title">
+                        <h2 class="card-title-text">Edad: 20-30</h2>
+                        <div class="belts">
+                            <div class="belt is-yellow"></div>
+                            <div class="belt is-orange"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <button class="categoria--delete card-footer-item">Eliminar</button>
+                    <button class="categoria--edit card-footer-item">Editar</button>
+                    <button class="categoria--new-participant card-footer-item">Nuevo Participante</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script defer>
+        function handleEventDeleteCategory() {
+            const btnDeletes = Array.from(document.getElementsByClassName("categoria--delete"))
+            btnDeletes.forEach((btnDelete) => {
+                btnDelete.addEventListener('click', async () => {
+                    await Swal.fire({
+                        title: 'Deseas borrar esta categoria?',
+                        icon: 'warning',
+                        showCancelButton: true,
+                        cancelButtonText: 'Cancelar',
+                        confirmButtonText: 'Borrar',
+                    })
+                })
+            })
+        }
+
+        function formToEditCategory() {
+            return `
+            <form class="form">
+            <div class="field">
+                <label class="label">Edad minima</label>
+                <input class="input" type="text" name="edad_minima" id="edad_minima">
+            </div>
+            <div class="field">
+                <label class="label">Edad maxima</label>
+                <input class="input" type="text" name="edad_minima" id="edad_minima">
+            </div>
+            <div class="field">
+                <label class="label">Cinturones</label>
+                <label class="checkbox">
+                    <input type="checkbox" name="belt-white" id="belt-white" value="white">
+                    <div class="belt--checkbox is-white"></div>
+                </label>
+                 <label class="checkbox">
+                    <input type="checkbox" name="belt-yellow" id="belt-yellow" value="yellow">
+                    <div class="belt--checkbox is-yellow"></div>
+                </label>
+                 <label class="checkbox">
+                    <input type="checkbox" name="belt-orange" id="belt-orange" value="orange">
+                    <div class="belt--checkbox is-orange"></div>
+                </label>
+                 <label class="checkbox">
+                    <input type="checkbox" name="belt-green" id="belt-green" value="green">
+                    <div class="belt--checkbox is-green"></div>
+                </label>
+                 <label class="checkbox">
+                    <input type="checkbox" name="belt-purple" id="belt-purple" value="purple">
+                    <div class="belt--checkbox is-purple"></div>
+                </label>
+                 <label class="checkbox">
+                    <input type="checkbox" name="belt-brown" id="belt-brown" value="brown">
+                    <div class="belt--checkbox is-brown"></div>
+                </label>
+                 <label class="checkbox">
+                    <input type="checkbox" name="belt-black" id="belt-black" value="black">
+                    <div class="belt--checkbox is-black"></div>
+                </label>
+            </div>
+            </form>
+        `
+        }
+        function formToNewParticipant() {
+            return `
+            <form class="form">
+            <div class="field">
+                <label class="label">Nombre</label>
+                <input class="input" type="text" name="nombre" id="nombre">
+            </div>
+            <div class="field">
+                <label class="label">Apellido</label>
+                <input class="input" type="text" name="apellido" id="apellido">
+            </div>
+            <div class="field">
+                <label class="label">Edad</label>
+               <input class="input" type="text" name="edad" id="edad">
+            </div>
+             <div class="field">
+                <label class="label">Sexo</label>
+                <div class="select">
+                <select id="sexo" name="sexo">
+                <option value="not-select" disabled>seleccion sexo</option>
+                <option value="M">Masculino</option>
+                <option value="F">Femenino</option>
+                </select>
+                </div>
+            </div>
+                <div class="control">
+                <label class="label">Cinturones</label>
+                <label for="cinturon" class="radio">
+                    <input type="radio" name="cinturon" id="cinturon" value="blanco">
+                    <div class="belt--checkbox is-white"></div>
+                </label>
+                 <label for="cinturon" class="radio">
+                    <input type="radio" name="cinturon" id="cinturon" value="amarrillo">
+                    <div class="belt--checkbox is-yellow"></div>
+                </label>
+                 <label for="cinturon" class="radio">
+                    <input type="radio" name="cinturon" id="cinturon" value="aranjado">
+                    <div class="belt--checkbox is-orange"></div>
+                </label>
+            </div>
+            </form>
+        `
+        }
+
+        function handleEventEditCategory() {
+            const btnDeletes = Array.from(document.getElementsByClassName("categoria--edit"))
+            btnDeletes.forEach((btnDelete) => {
+                btnDelete.addEventListener('click', async () => {
+                    console.log("Press btn edit")
+                    await Swal.fire({
+                        title: 'Editar Categoria',
+                        showCancelButton: true,
+                        cancelButtonText: 'Cancelar',
+                        confirmButtonText: 'Guardar',
+                        html: formToEditCategory()
+                    })
+                })
+            })
+        }
+
+        function handleEventNewParticipantCategory() {
+            const btnDeletes = Array.from(document.getElementsByClassName("categoria--new-participant"))
+            btnDeletes.forEach((btnDelete) => {
+                btnDelete.addEventListener('click', async () => {
+                      await Swal.fire({
+                        title: 'Nuevo participante',
+                        showCancelButton: true,
+                        cancelButtonText: 'Cancelar',
+                        confirmButtonText: 'Guardar',
+                        html: formToNewParticipant()
+                    })
+                })
+            })
+        }
+        function handleEventNewParticipant(){
+            const btnNewParticipant = document.getElementById("new--participant");
+            btnNewParticipant.addEventListener('click', async () => {
+                 await Swal.fire({
+                        title: 'Editar Categoria',
+                        showCancelButton: true,
+                        cancelButtonText: 'Cancelar',
+                        confirmButtonText: 'Guardar',
+                        html: formToEditCategory()
+                    })
+            })
+        }
+
+        handleEventDeleteCategory()
+        handleEventNewParticipantCategory()
+        handleEventEditCategory()
+        handleEventNewParticipant()
+    </script>
+</main>
+</body>
+</html>
