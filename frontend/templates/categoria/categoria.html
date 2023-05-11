@@ -186,6 +186,83 @@
         `
         }
 
+        function markCheckbox(cinturones) {
+            const belts = {
+                blanco: function (checked) {
+                    return ` <label class="checkbox">
+                    <input type="checkbox" name="belt-blanco" id="belt-blanco" value="blanco" ${checked}>
+                    <div class="belt--checkbox is-white"></div>
+                </label>`
+                },
+                amarillo: function (checked) {
+                    return ` <label class="checkbox">
+                    <input type="checkbox" name="belt-amarillo" id="belt-amarillo" value="amarillo" ${checked}>
+                    <div class="belt--checkbox is-yellow"></div>
+                </label>`
+                },
+                anaranjado: function (checked) {
+                    return `<label class="checkbox">
+                    <input type="checkbox" name="belt-anaranjado" id="belt-anaranjado" value="anaranjado" ${checked}>
+                    <div class="belt--checkbox is-orange"></div>
+                </label>`
+                },
+                verde: function (checked) {
+                    return ` <label class="checkbox">
+                    <input type="checkbox" name="belt-verde" id="belt-verde" value="verde" ${checked}>
+                    <div class="belt--checkbox is-green"></div>
+                </label>`
+                },
+                morado: function (checked) {
+                    return ` <label class="checkbox">
+                    <input type="checkbox" name="belt-morado" id="belt-morado" value="morado" ${checked}>
+                    <div class="belt--checkbox is-purple"></div>
+                </label>`
+                },
+                chocolate: function (checked) {
+                    return `  <label class="checkbox">
+                    <input type="checkbox" name="belt-chocolate" id="belt-chocolate" value="chocolate" ${checked}>
+                    <div class="belt--checkbox is-brown"></div>
+                </label>`
+                },
+                negro: function (checked) {
+                    return `  <label class="checkbox">
+                    <input type="checkbox" name="belt-negro" id="belt-negro" value="negro" ${checked}>
+                    <div class="belt--checkbox is-black"></div>
+                </label>`
+                }
+            }
+            let html = ""
+            for (const cinturon in belts) {
+                let checked = ""
+                if (cinturones.includes(cinturon)) {
+                    checked = "checked"
+                }
+                html += belts[cinturon](checked)
+            }
+            return html
+        }
+
+        function formToRealEditCategory(categoria) {
+            cinturones = markCheckbox(categoria.cinturones)
+            return `
+            <form class="form" id="formNewCategory">
+            <div class="field">
+                <label class="label">Edad minima</label>
+                <input class="input" type="number" name="age_min" id="age_min" value="${categoria.age_min}">
+            </div>
+            <div class="field">
+                <label class="label">Edad maxima</label>
+                <input class="input" type="number" name="age_max" id="age_max" value="${categoria.age_max}">
+            </div>
+            <div class="field">
+                <label class="label">Cinturones</label>
+                ${cinturones}
+                <input type="hidden" name="belts" id="belts" value="">
+            </div>
+            </form>
+        `
+        }
+
         function formToNewParticipant() {
             return `
             <form class="form">
@@ -235,13 +312,21 @@
             btnDeletes.forEach((btnDelete) => {
                 btnDelete.addEventListener('click', async () => {
                     console.log("Press btn edit")
+                    const categoriaId = btnDelete.dataset.id;
+                    // const formData = getValuesForm("formNewCategory");
+                    const response = await fetch(`/api/categorias/${categoriaId}`, {
+                        method: "GET"
+                    })
+                    const result = await response.json();
+                    console.log(result);
                     await Swal.fire({
                         title: 'Editar Categoria',
                         showCancelButton: true,
                         cancelButtonText: 'Cancelar',
                         confirmButtonText: 'Guardar',
-                        html: formToEditCategory()
+                        html: formToRealEditCategory(result)
                     })
+
                 })
             })
         }
@@ -257,6 +342,7 @@
                         confirmButtonText: 'Guardar',
                         html: formToNewParticipant()
                     })
+
                 })
             })
         }

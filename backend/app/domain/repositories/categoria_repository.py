@@ -10,7 +10,7 @@ async def create_category(category: CategoriaModel) -> CategoriaModel:
 
 async def read_by_id(category_id: str) -> CategoriaModel:
     category = await db.categoria.find_one({"_id": category_id})
-    return category
+    return CategoriaModel(**category)
 
 
 async def update_category(category_id: str, category: dict) -> CategoriaModel:

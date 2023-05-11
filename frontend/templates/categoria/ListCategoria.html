@@ -12,8 +12,9 @@
     </div>
     <div class="card-footer">
         <button class="categoria--delete card-footer-item" data-id="{{categoria.id}}">Eliminar</button>
-        <button class="categoria--edit card-footer-item">Editar</button>
-        <button class="categoria--new-participant card-footer-item">Nuevo Participante</button>
+        <button class="categoria--edit card-footer-item" data-id="{{categoria.id}}">Editar</button>
+        <button class="categoria--new-participant card-footer-item" data-id="{{categoria.id}}">Nuevo Participante
+        </button>
     </div>
 </div>
 {% endfor %}
