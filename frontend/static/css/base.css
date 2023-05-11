@@ -112,7 +112,7 @@ select {
 }
 
 .belt {
-    width: 10rem;
+    width: 4rem;
     height: 2rem;
     border-radius: .5rem;
 }
@@ -143,6 +143,35 @@ select {
 }
 
 .belt.is-black {
+    background-color: var(--clr-belt-black);
+    border: #fff solid 1px;
+}
+.belt.is-blanco {
+    background-color: var(--clr-white);
+    border: #000000 solid 1px;
+}
+
+.belt.is-amarillo {
+    background-color: var(--clr-belt-yellow);
+}
+
+.belt.is-verde {
+    background-color: var(--clr-belt-green);
+}
+
+.belt.is-anaranjado {
+    background-color: var(--clr-belt-orange);
+}
+
+.belt.is-morado {
+    background-color: var(--clr-belt-purple);
+}
+
+.belt.is-chocolate {
+    background-color: var(--clr-belt-brown);
+}
+
+.belt.is-negro {
     background-color: var(--clr-belt-black);
     border: #fff solid 1px;
 }
