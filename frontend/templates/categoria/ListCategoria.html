@@ -5,13 +5,13 @@
             <h2 class="card-title-text">Edad: {{categoria.name}}</h2>
             <div class="belts">
                 {% for belt in categoria.cinturones %}
-                    <div class="belt is-{{belt.value}}"></div>
+                <div class="belt is-{{belt.value}}"></div>
                 {% endfor %}
             </div>
         </div>
     </div>
     <div class="card-footer">
-        <button class="categoria--delete card-footer-item">Eliminar</button>
+        <button class="categoria--delete card-footer-item" data-id="{{categoria.id}}">Eliminar</button>
         <button class="categoria--edit card-footer-item">Editar</button>
         <button class="categoria--new-participant card-footer-item">Nuevo Participante</button>
     </div>

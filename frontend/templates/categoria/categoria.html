@@ -106,16 +106,37 @@
         function handleEventDeleteCategory() {
             const btnDeletes = Array.from(document.getElementsByClassName("categoria--delete"))
             btnDeletes.forEach((btnDelete) => {
-                btnDelete.addEventListener('click', async () => {
-                    await Swal.fire({
-                        title: 'Deseas borrar esta categoria?',
-                        icon: 'warning',
-                        showCancelButton: true,
-                        cancelButtonText: 'Cancelar',
-                        confirmButtonText: 'Borrar',
+                    btnDelete.addEventListener('click', async () => {
+                        const result = await Swal.fire({
+                            title: 'Deseas borrar esta categoria?',
+                            icon: 'warning',
+                            showCancelButton: true,
+                            cancelButtonText: 'Cancelar',
+                            confirmButtonText: 'Borrar',
+                        })
+                        const categoriaId = btnDelete.dataset.id
+                        if (result.isConfirmed) {
+                            const response = await fetch(`/api/categorias/${categoriaId}`, {
+                                method: "DELETE",
+                                headers: {'Content-Type': 'application/json'}
+                            })
+                            console.log(response.status);
+                            response.status === 204
+                                ? await Swal.fire(
+                                    'Categoria borrada!',
+                                    '',
+                                    'success'
+                                )
+                                : await Swal.fire(
+                                    'No se borro la categoria!',
+                                    '',
+                                    'error'
+                                )
+                        }
+                        swapHTMLElement()
                     })
-                })
-            })
+                }
+            )
         }
 
         function formToEditCategory() {
