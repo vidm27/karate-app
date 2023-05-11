@@ -10,7 +10,7 @@ from backend.db.py_object import PyObjectId
 class Cinturon(str, Enum):
     BLANCO = "blanco"
     AMARILLO = "amarillo"
-    ANARANJADO = "aranjado"
+    ANARANJADO = "anaranjado"
     VERDE = "verde"
     MORADO = "morado"
     CHOCOLATE = "chocolate"

@@ -10,12 +10,14 @@
     <script defer src="{{ url_for('static', path='js/sweetalert2.all.min.js')}}"></script>
 
     <style>
-        .form .label{
+        .form .label {
             text-align: left;
         }
-        .form .select, .form select{
+
+        .form .select, .form select {
             width: 100%;
         }
+
         #list-categoria {
             gap: 1rem;
         }
@@ -98,86 +100,6 @@
             </div>
         </article>
         <div id="list-categoria" class="is-flex is-flex-wrap-wrap">
-            <div class="card card--tiny categoria">
-                <div class="card-header">
-                    <div class="card-header-title">
-                        <h2 class="card-title-text">Edad: 20-30</h2>
-                        <div class="belts">
-                            <div class="belt is-yellow"></div>
-                            <div class="belt is-orange"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-footer">
-                    <button class="categoria--delete card-footer-item">Eliminar</button>
-                    <button class="categoria--edit card-footer-item">Editar</button>
-                    <button class="categoria--new-participant card-footer-item">Nuevo Participante</button>
-                </div>
-            </div>
-            <div class="card card--tiny categoria">
-                <div class="card-header">
-                    <div class="card-header-title">
-                        <h2 class="card-title-text">Edad: 20-30</h2>
-                        <div class="belts">
-                            <div class="belt is-yellow"></div>
-                            <div class="belt is-orange"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-footer">
-                    <button class="categoria--delete card-footer-item">Eliminar</button>
-                    <button class="categoria--edit card-footer-item">Editar</button>
-                    <button class="categoria--new-participant card-footer-item">Nuevo Participante</button>
-                </div>
-            </div>
-            <div class="card card--tiny categoria">
-                <div class="card-header">
-                    <div class="card-header-title">
-                        <h2 class="card-title-text">Edad: 20-30</h2>
-                        <div class="belts">
-                            <div class="belt is-yellow"></div>
-                            <div class="belt is-orange"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-footer">
-                    <button class="categoria--delete card-footer-item">Eliminar</button>
-                    <button class="categoria--edit card-footer-item">Editar</button>
-                    <button class="categoria--new-participant card-footer-item">Nuevo Participante</button>
-                </div>
-            </div>
-            <div class="card card--tiny categoria">
-                <div class="card-header">
-                    <div class="card-header-title">
-                        <h2 class="card-title-text">Edad: 20-30</h2>
-                        <div class="belts">
-                            <div class="belt is-yellow"></div>
-                            <div class="belt is-orange"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-footer">
-                    <button class="categoria--delete card-footer-item">Eliminar</button>
-                    <button class="categoria--edit card-footer-item">Editar</button>
-                    <button class="categoria--new-participant card-footer-item">Nuevo Participante</button>
-                </div>
-            </div>
-            <div class="card card--tiny categoria">
-                <div class="card-header">
-                    <div class="card-header-title">
-                        <h2 class="card-title-text">Edad: 20-30</h2>
-                        <div class="belts">
-                            <div class="belt is-yellow"></div>
-                            <div class="belt is-orange"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-footer">
-                    <button class="categoria--delete card-footer-item">Eliminar</button>
-                    <button class="categoria--edit card-footer-item">Editar</button>
-                    <button class="categoria--new-participant card-footer-item">Nuevo Participante</button>
-                </div>
-            </div>
         </div>
     </div>
     <script defer>
@@ -198,49 +120,51 @@
 
         function formToEditCategory() {
             return `
-            <form class="form">
+            <form class="form" id="formNewCategory">
             <div class="field">
                 <label class="label">Edad minima</label>
-                <input class="input" type="text" name="edad_minima" id="edad_minima">
+                <input class="input" type="number" name="age_min" id="age_min">
             </div>
             <div class="field">
                 <label class="label">Edad maxima</label>
-                <input class="input" type="text" name="edad_minima" id="edad_minima">
+                <input class="input" type="number" name="age_max" id="age_max">
             </div>
             <div class="field">
                 <label class="label">Cinturones</label>
                 <label class="checkbox">
-                    <input type="checkbox" name="belt-white" id="belt-white" value="white">
+                    <input type="checkbox" name="belt-white" id="belt-white" value="blanco">
                     <div class="belt--checkbox is-white"></div>
                 </label>
                  <label class="checkbox">
-                    <input type="checkbox" name="belt-yellow" id="belt-yellow" value="yellow">
+                    <input type="checkbox" name="belt-yellow" id="belt-yellow" value="amarillo">
                     <div class="belt--checkbox is-yellow"></div>
                 </label>
                  <label class="checkbox">
-                    <input type="checkbox" name="belt-orange" id="belt-orange" value="orange">
+                    <input type="checkbox" name="belt-orange" id="belt-orange" value="anaranjado">
                     <div class="belt--checkbox is-orange"></div>
                 </label>
                  <label class="checkbox">
-                    <input type="checkbox" name="belt-green" id="belt-green" value="green">
+                    <input type="checkbox" name="belt-green" id="belt-green" value="verde">
                     <div class="belt--checkbox is-green"></div>
                 </label>
                  <label class="checkbox">
-                    <input type="checkbox" name="belt-purple" id="belt-purple" value="purple">
+                    <input type="checkbox" name="belt-purple" id="belt-purple" value="morado">
                     <div class="belt--checkbox is-purple"></div>
                 </label>
                  <label class="checkbox">
-                    <input type="checkbox" name="belt-brown" id="belt-brown" value="brown">
+                    <input type="checkbox" name="belt-brown" id="belt-brown" value="chocolate">
                     <div class="belt--checkbox is-brown"></div>
                 </label>
                  <label class="checkbox">
-                    <input type="checkbox" name="belt-black" id="belt-black" value="black">
+                    <input type="checkbox" name="belt-black" id="belt-black" value="negro">
                     <div class="belt--checkbox is-black"></div>
                 </label>
+                <input type="hidden" name="belts" id="belts" value="">
             </div>
             </form>
         `
         }
+
         function formToNewParticipant() {
             return `
             <form class="form">
@@ -305,7 +229,7 @@
             const btnDeletes = Array.from(document.getElementsByClassName("categoria--new-participant"))
             btnDeletes.forEach((btnDelete) => {
                 btnDelete.addEventListener('click', async () => {
-                      await Swal.fire({
+                    const result = await Swal.fire({
                         title: 'Nuevo participante',
                         showCancelButton: true,
                         cancelButtonText: 'Cancelar',
@@ -315,23 +239,87 @@
                 })
             })
         }
-        function handleEventNewParticipant(){
+
+        function handleEventNewCategoria() {
             const btnNewParticipant = document.getElementById("new--participant");
             btnNewParticipant.addEventListener('click', async () => {
-                 await Swal.fire({
-                        title: 'Editar Categoria',
-                        showCancelButton: true,
-                        cancelButtonText: 'Cancelar',
-                        confirmButtonText: 'Guardar',
-                        html: formToEditCategory()
+                const result = await Swal.fire({
+                    title: 'Editar Categoria',
+                    showCancelButton: true,
+                    cancelButtonText: 'Cancelar',
+                    confirmButtonText: 'Guardar',
+                    html: formToEditCategory()
+                })
+                if (result.isConfirmed) {
+                    const formData = getValuesForm("formNewCategory");
+                    const categoriaModel = {
+                        name: "",
+                        age_min: 0,
+                        age_max: 0,
+                        cinturones: [],
+                        competicion_id: "",
+                        torneo_id: ""
+                    }
+                    categoriaModel["name"] = `${formData["age_min"]}-${formData["age_max"]}`;
+                    categoriaModel["age_min"] = formData["age_min"]
+                    categoriaModel["age_max"] = formData["age_max"]
+                    categoriaModel["competicion_id"] = "645d5d96dd50f069ce7f76a7";
+                    categoriaModel["torneo_id"] = "645d5e48dd50f069ce7f76ab"
+                    for (const key in formData) {
+                        if (key.startsWith('belt') && formData[key] !== "") {
+                            categoriaModel['cinturones'].push(formData[key])
+                        }
+                    }
+                    console.log({categoriaModel});
+                    const response = await fetch('/api/categorias', {
+                        method: "POST",
+                        body: JSON.stringify(categoriaModel),
+                        headers: {'Content-Type': 'application/json'}
                     })
+                    console.log(response.status);
+                    response.status === 200
+                        ? await Swal.fire(
+                            'Creada la categoria!',
+                            '',
+                            'success'
+                        )
+                        : await Swal.fire(
+                            'No se creo la categoria!',
+                            '',
+                            'error'
+                        )
+                }
+                swapHTMLElement()
             })
         }
 
-        handleEventDeleteCategory()
-        handleEventNewParticipantCategory()
-        handleEventEditCategory()
-        handleEventNewParticipant()
+        function swapHTMLElement() {
+            let xhr = new XMLHttpRequest();
+            xhr.open('GET', '/api/categorias/list');
+            xhr.responseType = "text";
+            xhr.send();
+            xhr.onload = () => {
+                let response = xhr.response;
+                const containerHTMLELement = document.getElementById("list-categoria");
+                containerHTMLELement.innerHTML = response;
+                reloadGroupEvents()
+            }
+        }
+
+        function getValuesForm(formId) {
+            const formCurrent = document.getElementById(formId);
+            let form = new FormData(formCurrent);
+            return Object.fromEntries(form.entries());
+        }
+
+        function reloadGroupEvents() {
+            handleEventDeleteCategory()
+            handleEventNewParticipantCategory()
+            handleEventEditCategory()
+        }
+
+        handleEventNewCategoria()
+        swapHTMLElement()
     </script>
 </main>
 </body>

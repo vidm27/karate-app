@@ -19,14 +19,21 @@ router.mount(
 
 @router.post("/categorias")
 async def create_category(categoria: CategoriaModel = Body(...)):
+    print(categoria)
     category = await categoria_repository.create_category(jsonable_encoder(categoria))
     return category
 
 
 @router.get("/categorias")
-async def get_all_category(request: Request):
-    result = await categoria_repository.search_category("", "")
+async def get_template_categorias(request: Request):
     return templates.TemplateResponse("categoria/categoria.html", {"request": request})
+
+
+@router.get("/categorias/list")
+async def get_all_categoria(request: Request):
+    result = await categoria_repository.search_category("", "")
+    print(result)
+    return templates.TemplateResponse("categoria/ListCategoria.html", {"request": request, "categorias": result})
 
 
 @router.get("/categorias/{categoria_id}")

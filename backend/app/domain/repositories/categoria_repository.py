@@ -39,5 +39,7 @@ async def search_category(torneo_id: str, competencia: str):
             }
         }
     ]
+    categorias = []
     async for i in db.categoria.aggregate(pipeline):
-        print(i)
+        categorias.append(CategoriaModel(**i))
+    return categorias
