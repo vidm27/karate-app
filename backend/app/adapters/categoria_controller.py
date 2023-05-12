@@ -3,7 +3,7 @@ from fastapi.encoders import jsonable_encoder
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 
-from backend.app.domain.entities.categoria import CategoriaModel
+from backend.app.domain.entities.categoria import CategoriaModel, UpdateCategoriaModel
 from backend.app.domain.repositories import categoria_repository
 from backend.core.config import TEMPLATE_PATH, STATIC_PATH
 
@@ -45,7 +45,7 @@ async def get_category(categoria_id):
 
 
 @router.put("/categorias/{categoria_id}")
-async def update_category(categoria_id: str, categoria: CategoriaModel):
+async def update_category(categoria_id: str, categoria: UpdateCategoriaModel = Body(...)):
     current_category = categoria.dict(exclude_none=True)
     torneo = await categoria_repository.update_category(categoria_id, current_category)
 

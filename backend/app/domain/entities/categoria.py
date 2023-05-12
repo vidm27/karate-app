@@ -45,7 +45,7 @@ class UpdateCategoriaModel(BaseModel):
     name: Optional[str]
     age_min: Optional[int]
     age_max: Optional[int]
-    cinturones: Optional[list[CategoriaCinturonModel]]
+    cinturones: Optional[list[Cinturon]]
 
     class Config:
         arbitrary_types_allowed = True

@@ -313,20 +313,54 @@
                 btnDelete.addEventListener('click', async () => {
                     console.log("Press btn edit")
                     const categoriaId = btnDelete.dataset.id;
-                    // const formData = getValuesForm("formNewCategory");
                     const response = await fetch(`/api/categorias/${categoriaId}`, {
                         method: "GET"
                     })
                     const result = await response.json();
                     console.log(result);
-                    await Swal.fire({
+                    const swal = await Swal.fire({
                         title: 'Editar Categoria',
                         showCancelButton: true,
                         cancelButtonText: 'Cancelar',
                         confirmButtonText: 'Guardar',
                         html: formToRealEditCategory(result)
                     })
-
+                    if (swal.isConfirmed) {
+                        const formData = getValuesForm("formNewCategory");
+                        const categoriaModel = {
+                            name: "",
+                            age_min: 0,
+                            age_max: 0,
+                            cinturones: [],
+                        }
+                        categoriaModel["name"] = `${formData["age_min"]}-${formData["age_max"]}`;
+                        categoriaModel["age_min"] = formData["age_min"]
+                        categoriaModel["age_max"] = formData["age_max"]
+                        for (const key in formData) {
+                            if (key.startsWith('belt') && formData[key] !== "") {
+                                categoriaModel['cinturones'].push(formData[key])
+                            }
+                        }
+                        console.log({categoriaModel});
+                        const response = await fetch(`/api/categorias/${categoriaId}`, {
+                            method: "PUT",
+                            body: JSON.stringify(categoriaModel),
+                            headers: {'Content-Type': 'application/json'}
+                        })
+                        console.log(response.status);
+                        response.status === 200
+                            ? await Swal.fire(
+                                'Actualizada la categoria!',
+                                '',
+                                'success'
+                            )
+                            : await Swal.fire(
+                                'No se actualizo la categoria!',
+                                '',
+                                'error'
+                            )
+                    }
+                    swapHTMLElement()
                 })
             })
         }
